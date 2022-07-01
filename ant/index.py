@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+
 import requests
 import time
 import json
@@ -13,7 +14,6 @@ class Ant(object):
     """
     蚂蚁加速器刷邀请
     """
-
     def __init__(self, aff):
         self.aff = aff
         self.oauth_id = ''
@@ -52,8 +52,7 @@ class Ant(object):
         aes加密
         """
         # cipher = AES.new(bytes.fromhex(self.hexkey), AES.MODE_CFB)
-        cipher = AES.new(b64decode(self.b64key), AES.MODE_CFB,
-                         segment_size=128)  # CFB模式，iv自动随机，块大小为128
+        cipher = AES.new(b64decode(self.b64key), AES.MODE_CFB, segment_size=128)  # CFB模式，iv自动随机，块大小为128
         ct_bytes = cipher.iv + cipher.encrypt(data.encode())  # iv+加密结果合并
         return ct_bytes.hex().upper()  # hex编码
 
@@ -77,8 +76,7 @@ class Ant(object):
         """
         请求封包
         """
-        plaintext = {"version": "2.4.3", "app_type": "ss_proxy",
-                     "language": 0, "bundleId": "com.dd.antss"}
+        plaintext = {"version": "2.4.3", "app_type": "ss_proxy", "language": 0, "bundleId": "com.dd.antss"}
         d.update(plaintext)
         self.timestamp = self.get_timestamp(10)
         self.encrypt_data = self.encrypt(json.dumps(d, separators=(',', ':')))
@@ -105,8 +103,7 @@ class Ant(object):
         m.update(get_random_bytes(16))
         oauth_id = m.hexdigest()
 
-        data = {"oauth_id": oauth_id, "oauth_type": "android",
-                "mod": "user", "code": "up_sign"}
+        data = {"oauth_id": oauth_id, "oauth_type": "android", "mod": "user", "code": "up_sign"}
         self.request(data)
         self.oauth_id = oauth_id
         print(oauth_id)
