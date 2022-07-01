@@ -9,7 +9,7 @@
 
 ```python
 #【某加速器】翻墙/搭梯子
-ant = Ant('*****') #邀请码
+ant = Ant('a***A') #邀请码
 ```
 
 ### 2. **关于 [小米运动](https://app.mi.com/details?id=com.xiaomi.hm.health) 每天自动提交步数**
