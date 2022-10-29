@@ -124,8 +124,8 @@ class Ant(object):
 
 
 if __name__ == "__main__":
-    ant = Ant('aRBGb')
+    ant = Ant('aRBGb') # 邀请码
     ant.invite()
     
-    ant = Ant('bs3sZ')
+    ant = Ant('bpVpM') # 邀请码
     ant.invite()
