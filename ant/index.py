@@ -132,4 +132,7 @@ if __name__ == "__main__":
     
     ant = Ant('bw4kF') # 邀请码
     ant.invite()
+    
+    ant = Ant('bf5Sg') # 邀请码
+    ant.invite()
 
