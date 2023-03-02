@@ -18,15 +18,15 @@ ant = Ant('a***A') #邀请码
 
 ```python
 #【小米运动】微信/支付宝
-user = "1*********6" #手机号
-password = "1******8" #密码
+user = "1*********6" #邮箱帐号
+password = "1******8" #登录密码
 step = str(randint(17760,19999)) #随机步数
 ```
 
 **【注】不会使用钉钉机器人或不需要被通知等，可自行注释如下内容：**
 
 ```python
-sendDingDing(result) #大概在第103行
+sendDingDing(result) #大概在第106行
 ```
 
 ### 3. **关于 [GitHub Actions](https://docs.github.com/cn/actions) 部署教程**
