@@ -18,8 +18,8 @@ ant = Ant('a***A') #邀请码
 
 ```python
 #【小米运动】微信/支付宝
-user = "1*********6" #邮箱帐号
-password = "1******8" #登录密码
+user = "email@huami.step" #邮箱帐号
+password = "password" #登录密码
 step = str(randint(17760,19999)) #随机步数
 ```
 
