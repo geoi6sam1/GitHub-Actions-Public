@@ -17,8 +17,6 @@ ant = Ant('a***A') #邀请码
 * **部署账号密码步数 [`index.py`](https://github.com/geoi6sam1/GitHub-Actions-Public/blob/main/huami-step/index.py) 如下：**
 
 ```python
-#【Zepp Life】微信/支付宝
-
 # 帐号（这里只能是邮箱）
 user = "email@huami.step"
 # 密码（尽量设置简单点）
