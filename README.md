@@ -15,7 +15,7 @@ ant = Ant('a***A') #邀请码
 ### 2. **关于 [Zepp Life](https://app.mi.com/details?id=com.xiaomi.hm.health) 每天自动提交步数**
 
 * **改自：[motion-for-email](https://github.com/matocool/motion-for-email) 【邮箱版】**
-* **部署账号密码步数 [`index.py`](https://github.com/geoi6sam1/GitHub-Actions-Public/blob/main/huami-step/index.py) 如下：**
+* **部署账号密码步数 [`index.py`](https://github.com/geoi6sam1/GitHub-Actions-Public/blob/main/zepp/index.py) 如下：**
 
 ```python
 # 帐号（这里只能是邮箱）
