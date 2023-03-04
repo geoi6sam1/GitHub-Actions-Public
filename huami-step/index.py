@@ -103,7 +103,8 @@ def main():
     t_datetime = (datetime.now() + timedelta(hours=8)).strftime("日期：%Y/%m/%d\n时间：%H:%M:%S")
     # result = f"{user[:3]}****{user[7:]} 改步（{step}）\\[" + response['message'] + "]\n\n"
     result = t_datetime + f"\n帐号：{user}\n密码：{password}\n步数：{step}\n状态：" + response['message']
-    sendDingDing(result)
+    if dingdingmsg == 1:
+        sendDingDing(result)
     print(result)
     return result
 
@@ -145,7 +146,9 @@ if __name__ == "__main__":
     user = "email@huami.step"
     # 密码
     password = "password"
-    # 步数
+    # 步数范围
     step = str(random.randint(17760, 23456))
+    # 钉钉消息
+    dingdingmsg = 1
     
     main()
