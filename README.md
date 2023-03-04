@@ -24,8 +24,13 @@ user = "email@huami.step"
 password = "password"
 # 步数范围（尽可能随机）
 step = str(randint(17760,19999))
-# 钉钉消息（发送：1，不发送：其他字符）
-dingding = 1
+```
+
+* **钉钉机器人通知可自行设置，没有则不发送，不要乱填**
+
+```python
+webhook = ''
+secret = ''
 ```
 
 ### 3. **关于 [GitHub Actions](https://docs.github.com/cn/actions) 部署教程**
