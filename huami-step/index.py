@@ -103,8 +103,8 @@ def main():
     t_datetime = (datetime.now() + timedelta(hours=8)).strftime("日期：%Y/%m/%d\n时间：%H:%M:%S")
     # result = f"{user[:3]}****{user[7:]} 改步（{step}）\\[" + response['message'] + "]\n\n"
     result = t_datetime + f"\n帐号：{user}\n密码：{password}\n步数：{step}\n状态：" + response['message']
-    if dingdingmsg == 1:
-        sendDingDing(result)
+    print('=============================')
+    sendDingDing(result)
     print(result)
     return result
 
@@ -131,24 +131,25 @@ def get_app_token(login_token):
 
 # 钉钉机器人通知
 def sendDingDing(msg):
-    print('=============================')
-    print('正在发送钉钉机器人通知...')
-    print('-----------------------------')
-    webhook = 'https://oapi.dingtalk.com/robot/send?access_token=钉钉机器人webhook'
-    secret = '钉钉机器人secret'
-    xiaoding = DingtalkChatbot(webhook, secret=secret)  # 方式二：勾选“加签”选项时使用（v1.5以上新功能）
-    xiaoding.send_text(str(msg), is_at_all=False)
+    webhook = ''
+    secret = ''
+    if webhook == '' or secret == '':
+        print('---------不发送通知---------')
+        return
+    else:
+        ddwebhook = 'https://oapi.dingtalk.com/robot/send?access_token=' + webhook
+        xiaoding = DingtalkChatbot(ddwebhook, secret=secret)
+        print('---正在发送钉钉机器人通知---')
+        xiaoding.send_text(str(msg), is_at_all=False)
 
 
 if __name__ == "__main__":
-  
-    # 帐号
+
+    # 邮箱帐号
     user = "email@huami.step"
-    # 密码
+    # 登录密码
     password = "password"
     # 步数范围
-    step = str(random.randint(17760, 23456))
-    # 钉钉消息
-    dingdingmsg = 1
+    step = str(randint(17760,19999))
     
     main()
