@@ -2,4 +2,4 @@
 
 <p align="middle"></p>
 
-### 👉 [**GitHub Actions 部署教程**](https://docs.github.com/cn/actions) 👈
+### **怎么用？** 👉 [**GitHub Actions 部署教程**](https://docs.github.com/cn/actions) 👈
