@@ -130,3 +130,5 @@ if __name__ == "__main__":
     ant = Ant('aRBGb')
     ant.invite()
 
+    ant = Ant('aUDAw')
+    ant.invite()
