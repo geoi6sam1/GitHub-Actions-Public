@@ -126,9 +126,7 @@ if __name__ == "__main__":
     # 邀请码
     ant = Ant('bpVpM')
     ant.invite()
-    
-    ant = Ant('aRBGb')
-    ant.invite()
+
 
     ant = Ant('aUDAw')
     ant.invite()
