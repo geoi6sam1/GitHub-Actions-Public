@@ -128,5 +128,5 @@ if __name__ == "__main__":
     ant.invite()
 
 
-    ant = Ant('aUDAw')
+    ant = Ant('bAPqR')
     ant.invite()
