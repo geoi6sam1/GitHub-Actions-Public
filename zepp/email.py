@@ -98,11 +98,14 @@ def main():
     response = requests.post(url, data=data, headers=head).json()
     # print(response)
     bj_datetime = (datetime.now() + timedelta(hours=8))
-    bj_date = bj_datetime.strftime("%Y-%m-%d")
+    bj_date = bj_datetime.strftime("%Y/%m/%d")
     bj_time = bj_datetime.strftime("%H:%M:%S")
-    result = f"日期：{bj_date}\n时间：{bj_time}\n帐号：{user}\n密码：{password[:2]}***{password[7:]}\n步数：{step}\n状态：" + response['message']
+    email = re.search(r"@.*",user).group()
+    pwd = re.search(r"..$", password).group()
+    result = f"日期：{bj_date}\n时间：{bj_time}\n帐号：{user[:4]}***{email}\n密码：{password[:2]}***{pwd}\n步数：{step}\n状态：" + response['message']
     print('=============================')
-    sendDingDing(result)
+    # sendFeiShu(result)
+    # sendDingDing(result)
     print(result)
     return result
 
@@ -127,13 +130,10 @@ def get_app_token(login_token):
     return app_token
 
 
-# 钉钉机器人通知
+# 钉钉群机器人通知
 def sendDingDing(msg):
-    # Webhook地址
-    webhook = ''
-    # 加签密钥
-    secret = ''
-    
+    webhook = 'fadb***cae0'
+    secret = 'SEC0***86d9'
     if webhook == '' or secret == '':
         print('---------不发送通知---------')
         return
@@ -143,14 +143,26 @@ def sendDingDing(msg):
         print('---正在发送钉钉机器人通知---')
         xiaoding.send_text(str(msg), is_at_all=False)
 
+# 飞书群机器人通知
+def sendFeiShu(msg):
+    fswebhook = 'https://open.feishu.cn/open-apis/bot/v2/hook/b630***5d9c'
+    headers = {
+        "Content-Type": "application/json; charset=utf-8",
+    }
+    payload_message = {
+        "msg_type": "text",
+        "content": {
+            "text": msg
+        }
+    }
+    response = requests.post(url=fswebhook, headers=headers, data=json.dumps(payload_message))
+    return response
+	
 
 if __name__ == "__main__":
 
-    # 邮箱帐号
-    user = "email@zepp.step"
-    # 登录密码
+    # PJS
+    user = "geoi6sam1@qq.com"
     password = "password"
-    # 步数范围
-    step = str(randint(17760,19999))
-    
+    step = str(randint(17760, 54321))
     main()
