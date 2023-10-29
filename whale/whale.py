@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 import requests,time,random
 
 bj = 'K8XN3'  # 邀请码
