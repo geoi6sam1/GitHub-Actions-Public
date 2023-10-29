@@ -1,6 +1,5 @@
-# -*- encoding: utf-8 -*-
-
 import requests,time,random
+from datetime import datetime
 
 bj = 'K8XN3'  # 邀请码
 
@@ -58,4 +57,8 @@ if __name__ == '__main__':
     j=0
     for i in range(1, times+1):
         a()
-        print("\n已邀请{}个人".format(i))
+        bj_datetime = datetime.now()
+        bj_date = bj_datetime.strftime("%Y/%m/%d")
+        bj_time = bj_datetime.strftime("%H:%M:%S")
+        print(bj_date + " " + bj_time + " " + "已邀请{}个人".format(i))
+        time.sleep(random.randint(5,20))
