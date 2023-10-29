@@ -58,4 +58,4 @@ if __name__ == '__main__':
     j=0
     for i in range(1, times+1):
         a()
-        print("\n\t已邀请{}个人".format(i))
+        print("\n已邀请{}个人".format(i))
