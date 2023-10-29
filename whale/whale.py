@@ -55,6 +55,7 @@ def a():
 
 if __name__ == '__main__':
     j=0
+    print("代码初始化加载运行...")
     for i in range(1, times+1):
         a()
         bj_datetime = datetime.now()
