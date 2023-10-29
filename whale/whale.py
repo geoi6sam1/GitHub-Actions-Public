@@ -1,6 +1,4 @@
-import requests
-import time
-import random
+import requests,time,random
 
 bj = 'K8XN3'  # 邀请码
 
