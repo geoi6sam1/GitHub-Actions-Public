@@ -2,7 +2,6 @@
 import requests,time,json,re
 from random import randint
 from datetime import datetime,timedelta
-from dingtalkchatbot.chatbot import DingtalkChatbot
 
 
 headers = {'User-Agent': 'MiFit/5.3.0 (iPhone; iOS 14.7.1; Scale/3.00)'}
@@ -38,10 +37,14 @@ def login(user, password):
     # print(code)
 
     url2 = "https://account.huami.com/v2/client/login"
+    if '@' in user:
+        third_name = 'email'
+    else:
+        third_name = 'huami_phone'
     data2 = {
         "allow_registration=": "false",
         "app_name": "com.xiaomi.hm.health",
-        "app_version": "6.3.5",
+        "app_version": "6.9.5",
         "code": f"{code}",
         "country_code": "CN",
         "device_id": "2C8B4939-0CCD-4E94-8CBA-CB8EA6E613A1",
@@ -49,9 +52,9 @@ def login(user, password):
         "dn": "api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com",
         "grant_type": "access_token",
         "lang": "zh_CN",
-        "os_version": "1.5.0",
+        "os_version": "2.11.00",
         "source": "com.xiaomi.hm.health",
-        "third_name": "email",
+        "third_name": third_name,
     }
     r2 = requests.post(url2, data=data2, headers=headers).json()
     login_token = r2["token_info"]["login_token"]
@@ -100,12 +103,7 @@ def main():
     bj_datetime = (datetime.now() + timedelta(hours=8))
     bj_date = bj_datetime.strftime("%Y/%m/%d")
     bj_time = bj_datetime.strftime("%H:%M:%S")
-    email = re.search(r"@.*",user).group()
-    pwd = re.search(r"..$", password).group()
-    result = f"日期：{bj_date}\n时间：{bj_time}\n帐号：{user[:4]}***{email}\n密码：{password[:2]}***{pwd}\n步数：{step}\n状态：" + response['message']
-    print('=============================')
-    # sendFeiShu(result)
-    # sendDingDing(result)
+    result = f"日期：{bj_date}\n时间：{bj_time}\n帐号：{user}\n步数：{step}\n状态：" + response['message']
     print(result)
     return result
 
@@ -130,39 +128,12 @@ def get_app_token(login_token):
     return app_token
 
 
-# 钉钉群机器人通知
-def sendDingDing(msg):
-    webhook = 'fadb***cae0'
-    secret = 'SEC0***86d9'
-    if webhook == '' or secret == '':
-        print('---------不发送通知---------')
-        return
-    else:
-        ddwebhook = 'https://oapi.dingtalk.com/robot/send?access_token=' + webhook
-        xiaoding = DingtalkChatbot(ddwebhook, secret=secret)
-        print('---正在发送钉钉机器人通知---')
-        xiaoding.send_text(str(msg), is_at_all=False)
-
-# 飞书群机器人通知
-def sendFeiShu(msg):
-    fswebhook = 'https://open.feishu.cn/open-apis/bot/v2/hook/b630***5d9c'
-    headers = {
-        "Content-Type": "application/json; charset=utf-8",
-    }
-    payload_message = {
-        "msg_type": "text",
-        "content": {
-            "text": msg
-        }
-    }
-    response = requests.post(url=fswebhook, headers=headers, data=json.dumps(payload_message))
-    return response
-	
-
 if __name__ == "__main__":
 
-    # PJS
+    # 邮箱/手机号
     user = "geoi6sam1@qq.com"
+    # 登录密码
     password = "password"
-    step = str(randint(17760, 54321))
+    # 步数范围
+    step = str(randint(17760, 29999))
     main()
