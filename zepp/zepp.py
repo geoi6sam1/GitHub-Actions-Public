@@ -16,6 +16,13 @@ def get_code(location):
 
 # 登录
 def login(user, password):
+    PHONE_PATTERN = r"(^(1)\d{10}$)"
+    if re.match(PHONE_PATTERN, user):
+        user = "+86" + user
+        third_name = "huami_phone"
+    else:
+        third_name = "email"
+
     url1 = "https://api-user.huami.com/registrations/" + user + "/tokens"
     headers = {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -37,10 +44,6 @@ def login(user, password):
     # print(code)
 
     url2 = "https://account.huami.com/v2/client/login"
-    if '@' in user:
-        third_name = 'email'
-    else:
-        third_name = 'huami_phone'
     data2 = {
         "allow_registration=": "false",
         "app_name": "com.xiaomi.hm.health",
